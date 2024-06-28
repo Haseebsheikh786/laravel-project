@@ -24,7 +24,6 @@ class NoteController extends Controller
      */
     public function create()
     {
-        return view('note.create');
     }
 
     /**
@@ -50,7 +49,7 @@ class NoteController extends Controller
         if ($note->user_id !== request()->user()->id) {
             abort(403);
         }
-        return view('note.show', ['note' => $note]);
+        return view('showNote', ['note' => $note]);
     }
 
     /**
@@ -61,7 +60,7 @@ class NoteController extends Controller
         if ($note->user_id !== request()->user()->id) {
             abort(403);
         }
-        return view('note.edit', ['note' => $note]);
+        return view('editNote', ['note' => $note]);
     }
 
     /**
