@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
@@ -12,6 +13,9 @@ class NoteController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login'); // Redirect to login page
+        }
         $notes = Note::
             where('user_id', request()->user()->id)
             ->orderBy('created_at', 'desc')
