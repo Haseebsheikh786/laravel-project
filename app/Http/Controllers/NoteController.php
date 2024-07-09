@@ -17,8 +17,7 @@ class NoteController extends Controller
             return redirect()->route('login'); // Redirect to login page
         }
         $notes = Note::
-            where('user_id', request()->user()->id)
-            ->orderBy('created_at', 'desc')
+            orderBy('created_at', 'desc')
             ->get();
         return view('home', compact('notes'));
     }
@@ -40,6 +39,7 @@ class NoteController extends Controller
         ]);
 
         $data['user_id'] = $request->user()->id;
+        $data['user_name'] = $request->user()->name;
         $note = Note::create($data);
 
         return to_route('note.show', $note)->with('message', 'Note was create');

@@ -10,6 +10,8 @@
 
     @foreach ($notes as $note)
   <ul class="note rounded border my-5 w-96 mx-auto overflow-hidden shadow">
+
+    <p class="pt-2 px-3">  {{ $note->user_name }}</p>
     <li class="note-body px-4 py-3 hover:bg-gray-200 text-center">
       {{ Str::words($note->note, 30) }}
     </li>

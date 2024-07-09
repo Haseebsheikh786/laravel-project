@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     @vite('resources/css/app.css')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 
 <body class="antialiased">
@@ -22,8 +24,8 @@
 
             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                  this.closest('form').submit();">
-                {{ __('Log Out') }}
-            </x-dropdown-link>
+        {{ __('Log Out') }} ({{ $userName }})
+        </x-dropdown-link>
         </form>
     </nav>
 
