@@ -13,13 +13,12 @@ class NoteController extends Controller
      */
     public function index()
     {
-        if (!Auth::check()) {
-            return redirect()->route('login'); // Redirect to login page
-        }
-        $notes = Note::
-            orderBy('created_at', 'desc')
+        // if (!Auth::check()) {
+        //     return redirect()->route('login'); // Redirect to login page
+        // }
+        $notes = Note::orderBy('created_at', 'desc')
             ->get();
-        return view('home', compact('notes'));
+        return response()->json(['status' => 'success', 'code' => 200, 'data' => $notes]);
     }
 
     /**
