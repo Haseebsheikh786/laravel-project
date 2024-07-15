@@ -41,7 +41,7 @@ class NoteController extends Controller
         $data['user_name'] = $request->user()->name;
         $note = Note::create($data);
 
-        return to_route('note.show', $note)->with('message', 'Note was create');
+        return response()->json(['status' => 'success', 'code' => 200, 'message' => "note created successfully"]);
     }
 
     /**
@@ -49,10 +49,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        if ($note->user_id !== request()->user()->id) {
-            abort(403);
-        }
-        return view('showNote', ['note' => $note]);
+        return response()->json(['status' => 'success', 'code' => 200, 'note' => $note]);
     }
 
     /**
@@ -80,7 +77,7 @@ class NoteController extends Controller
 
         $note->update($data);
 
-        return to_route('note.show', $note)->with('message', 'Note was updated');
+        return response()->json(['status' => 'success', 'code' => 200, 'message' => "note updated successfully"]);
     }
 
     /**
@@ -93,6 +90,6 @@ class NoteController extends Controller
         }
         $note->delete();
 
-        return to_route('note.index')->with('message', 'Note was deleted');
+        return response()->json(['status' => 'success', 'code' => 200, 'message' => "note deleted successfully"]);
     }
 }
