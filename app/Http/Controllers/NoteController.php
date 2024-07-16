@@ -72,7 +72,8 @@ class NoteController extends Controller
             abort(403);
         }
         $data = $request->validate([
-            'note' => ['required', 'string']
+            'note' => ['required', 'string'],
+            'likes' => ['nullable', 'array'],
         ]);
 
         $note->update($data);
